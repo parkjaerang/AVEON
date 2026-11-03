@@ -6,22 +6,22 @@ const values = [
   {
     index: '01',
     title: '전문성',
-    text: '피부과와 의료 뷰티 시장의 맥락을 이해하고, 병원별 목표에 맞는 중국 마케팅 방향을 설계합니다.',
+    text: '피부과와 의료 뷰티 시장의 맥락을 이해하고,\n병원별 목표에 맞는 중국 마케팅 방향을 설계합니다.',
   },
   {
     index: '02',
     title: '현지화',
-    text: '샤오홍슈, 더우인, 위챗 등 중국 SNS의 콘텐츠 형식과 고객 언어에 맞춰 전략을 실행합니다.',
+    text: '샤오홍슈, 더우인, 위챗 등 중국 SNS의\n콘텐츠 형식과 고객 언어에 맞춰 전략을 실행합니다.',
   },
   {
     index: '03',
     title: '실행력',
-    text: '기획에서 인플루언서 섭외, 콘텐츠 게시, 계정 운영까지 캠페인이 실제로 움직이도록 함께합니다.',
+    text: '기획에서 인플루언서 섭외, 콘텐츠 게시, 계정 운영까지\n캠페인이 실제로 움직이도록 함께합니다.',
   },
   {
     index: '04',
     title: '투명한 성과 관리',
-    text: '조회, 참여, 문의로 이어지는 과정을 보고하고, 다음 실행에 반영할 수 있도록 정리합니다.',
+    text: '조회, 참여, 문의로 이어지는 과정을 보고하고,\n다음 실행에 반영할 수 있도록 정리합니다.',
   },
 ]
 </script>
@@ -38,28 +38,33 @@ const values = [
           </h2>
           <p class="about__axis">KOREA × CHINA&nbsp;&nbsp;·&nbsp;&nbsp;BEAUTY × DIGITAL</p>
           <p>
-            에비온컴퍼니는 한국 피부과의 중국 시장 진출과 고객 접점 확대를 지원하는
+            에비온컴퍼니는 한국 피부과의 중국 시장 진출과 고객 접점 확대를 지원하는<br />
             중국 마케팅 전문 기업입니다.
           </p>
           <p>
-            중국 SNS 플랫폼에 적합한 콘텐츠 전략과 인플루언서 협업을 통해
+            중국 SNS 플랫폼에 적합한 콘텐츠 전략과 인플루언서 협업을 통해<br />
             병원별 마케팅 목표에 맞는 실행 방안을 제안합니다.
           </p>
         </div>
         <figure class="about__media">
           <img :src="aboutImage" alt="중국 시장과 연결되는 글로벌 비즈니스 도시 풍경" />
-          <figcaption>중국 현지 플랫폼 기준으로 콘텐츠와 고객 접점을 설계합니다.</figcaption>
         </figure>
       </ScrollReveal>
 
       <ScrollReveal tag="div" class="about__mv" :threshold="0.12">
         <article class="reveal-item">
           <p class="about__mv-label">MISSION</p>
-          <h3>한국의 우수한 의료·뷰티 서비스를 중국 고객에게 효과적으로 전달합니다.</h3>
+          <h3>
+            한국의 우수한 의료·뷰티 서비스를<br />
+            중국 고객에게 효과적으로 전달합니다.
+          </h3>
         </article>
         <article class="reveal-item" style="transition-delay: 0.08s">
           <p class="about__mv-label">VISION</p>
-          <h3>한국과 중국을 연결하는 신뢰도 높은 뷰티 마케팅 파트너로 성장합니다.</h3>
+          <h3>
+            한국과 중국을 연결하는<br />
+            신뢰도 높은 뷰티 마케팅 파트너로 성장합니다.
+          </h3>
         </article>
       </ScrollReveal>
 
@@ -128,6 +133,8 @@ const values = [
   color: #4b5563;
   font-size: 17px;
   line-height: 1.85;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .about__copy p.about__label {
@@ -167,12 +174,6 @@ const values = [
   transform: scale(1.03);
 }
 
-.about__media figcaption {
-  margin-top: 12px;
-  color: var(--text);
-  font-size: 13px;
-}
-
 .about__mv {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -198,6 +199,8 @@ const values = [
   font-weight: 700;
   line-height: 1.55;
   letter-spacing: -0.03em;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .about__values {
@@ -240,6 +243,9 @@ const values = [
   color: var(--text);
   font-size: 14px;
   line-height: 1.7;
+  white-space: pre-line;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 @media (max-width: 1024px) {

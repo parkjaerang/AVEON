@@ -8,7 +8,8 @@ import serviceCity from '@/assets/images/hero-city.jpg'
 const featured: ServiceItem = {
   index: '01',
   title: '피부과 중국 마케팅 운영',
-  summary: '병원별 목표에 맞춰 중국 마케팅 전략을 세우고, 콘텐츠부터 월간 보고까지 한 흐름으로 운영합니다.',
+  summary:
+    '병원별 목표에 맞춰 중국 마케팅 전략을 세우고,\n콘텐츠부터 월간 보고까지 한 흐름으로 운영합니다.',
   items: ['마케팅 전략', '콘텐츠 캘린더', '플랫폼별 운영', '월간 보고'],
 }
 
@@ -16,31 +17,36 @@ const services: ServiceItem[] = [
   {
     index: '02',
     title: '중국 인플루언서 섭외',
-    summary: '채널과 지표를 검토한 뒤, 병원과 캠페인에 맞는 인플루언서를 섭외하고 일정을 조율합니다.',
+    summary:
+      '채널과 지표를 검토한 뒤, 병원과 캠페인에 맞는\n인플루언서를 섭외하고 일정을 조율합니다.',
     items: ['인플루언서 리스트업', '채널 및 지표 검토', '섭외 및 일정 조율'],
   },
   {
     index: '03',
     title: '콘텐츠 기획 및 제작',
-    summary: '중국 고객이 이해하는 주제로 기획하고, 촬영부터 게시 관리까지 콘텐츠 제작을 지원합니다.',
+    summary:
+      '중국 고객이 이해하는 주제로 기획하고,\n촬영부터 게시 관리까지 콘텐츠 제작을 지원합니다.',
     items: ['콘텐츠 주제 기획', '촬영 협업', '영상 및 이미지 제작', '게시 관리'],
   },
   {
     index: '04',
     title: '중국 SNS 계정 관리',
-    summary: '게시 이후에도 계정 운영, 문의 모니터링, 반응 분석을 통해 접점이 끊기지 않도록 관리합니다.',
+    summary:
+      '게시 이후에도 계정 운영, 문의 모니터링, 반응 분석을 통해\n접점이 끊기지 않도록 관리합니다.',
     items: ['게시물 운영', '댓글 및 문의 모니터링', '콘텐츠 반응 분석'],
   },
   {
     index: '05',
     title: '캠페인 성과 분석',
-    summary: '조회수와 참여도에서 문의까지, 캠페인이 실제로 어떤 반응을 만들었는지 정리해 보고합니다.',
+    summary:
+      '조회수와 참여도에서 문의까지,\n캠페인이 실제로 어떤 반응을 만들었는지 정리해 보고합니다.',
     items: ['조회수', '참여도', '저장', '링크 클릭', '문의 성과'],
   },
   {
     index: '06',
     title: '중국 고객 상담 연결',
-    summary: '위챗 등 현지 고객 접점과 상담 흐름을 연결해, 관심 고객이 병원 문의까지 이어지도록 설계합니다.',
+    summary:
+      '위챗 등 현지 고객 접점과 상담 흐름을 연결해,\n관심 고객이 병원 문의까지 이어지도록 설계합니다.',
     items: ['위챗 등 고객 접점 연계', '상담 흐름 설계'],
   },
 ]
@@ -55,7 +61,7 @@ const services: ServiceItem[] = [
           중국 마케팅에 필요한 실행을<br />한 흐름으로 맡깁니다
         </h2>
         <p class="services__lead reveal-item" style="transition-delay: 0.12s">
-          전략 수립부터 인플루언서 섭외, 콘텐츠 운영, 성과 정리, 상담 연결까지
+          전략 수립부터 인플루언서 섭외, 콘텐츠 운영, 성과 정리, 상담 연결까지<br />
           피부과 중국 마케팅에 필요한 과정을 함께 진행합니다.
         </p>
       </ScrollReveal>
@@ -174,6 +180,8 @@ const services: ServiceItem[] = [
   color: #4b5563;
   font-size: 16px;
   line-height: 1.8;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .feature {
@@ -214,6 +222,9 @@ const services: ServiceItem[] = [
   font-size: 15px;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.78);
+  white-space: pre-line;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .feature ul,

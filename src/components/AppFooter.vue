@@ -25,8 +25,8 @@ const year = new Date().getFullYear()
           <img :src="logoUrl" alt="AVEON COMPANY" width="148" height="32" />
         </RouterLink>
         <p class="footer__tagline">
-          한국 피부과·뷰티 기업의 중국 시장 진출을 위한 마케팅 파트너입니다. 중국 SNS 운영,
-          인플루언서 협업, 콘텐츠 실행까지 한 흐름으로 지원합니다.
+          한국 피부과·뷰티 기업의 중국 시장 진출을 위한 마케팅 파트너입니다.<br />
+          중국 SNS 운영, 인플루언서 협업, 콘텐츠 실행까지 한 흐름으로 지원합니다.
         </p>
       </div>
 
