@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
+import ctaBackground from '@/assets/images/andy-wang-kMzMK36LCeA-unsplash.jpg'
+
+const ctaBackgroundImage = `url(${ctaBackground})`
 
 const strengths = [
   '피부과 분야에 특화된 중국 마케팅 운영 경험',
@@ -74,9 +77,14 @@ const strengths = [
 .strength__cta {
   margin-top: 64px;
   padding: clamp(40px, 5vw, 56px) clamp(32px, 5vw, 64px) clamp(44px, 5vw, 60px);
-  background: var(--navy);
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(rgba(23, 42, 67, 0.84), rgba(23, 42, 67, 0.92)), v-bind(ctaBackgroundImage);
+  background-size: cover;
+  background-position: center 20%;
   color: var(--white);
   border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .strength__cta h3 {
