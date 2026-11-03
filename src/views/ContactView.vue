@@ -10,7 +10,7 @@ const serviceOptions = [
   '콘텐츠 제작 및 캠페인',
 ]
 
-const platformOptions = ['샤오홍슈', '더우인', '위챗', '미팅 운영 / 상담 후 결정']
+const platformOptions = ['샤오홍슈', '더우인', '위챗', '통합운영 / 상담 후 결정']
 
 const budgetOptions = ['월 600만원 이상', '월 1,000만원 이상', '월 1,500만원 이상', '상담 후 결정']
 
