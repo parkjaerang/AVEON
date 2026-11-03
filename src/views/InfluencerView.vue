@@ -51,7 +51,6 @@ const servicePoints = [
               class="influencer__type"
               :class="`influencer__type--${item.id}`"
               self
-              :threshold="0.12"
             >
               <h2>{{ item.title }}</h2>
               <p>{{ item.text }}</p>

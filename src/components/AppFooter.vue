@@ -19,7 +19,7 @@ const year = new Date().getFullYear()
 
 <template>
   <footer class="footer">
-    <ScrollReveal class="footer__shell" :threshold="0.06">
+    <ScrollReveal class="footer__shell" :threshold="0.18">
       <div class="footer__mast reveal-item">
         <RouterLink class="footer__logo" to="/" aria-label="AVEON COMPANY 홈">
           <img :src="logoUrl" alt="AVEON COMPANY" width="148" height="32" />

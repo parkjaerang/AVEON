@@ -12,7 +12,7 @@ const strengths = [
 <template>
   <section id="home-strength" class="strength">
     <div class="strength__inner">
-      <ScrollReveal class="strength__block" self :threshold="0.15">
+      <ScrollReveal class="strength__block" self :threshold="0.28">
         <h2 class="strength__heading">에비온컴퍼니의 경쟁력</h2>
         <ul class="strength__list">
           <li
@@ -26,7 +26,7 @@ const strengths = [
         </ul>
       </ScrollReveal>
 
-      <ScrollReveal class="strength__cta" self :threshold="0.12">
+      <ScrollReveal class="strength__cta" self>
         <h3>중국 시장 진출, 어디서부터 시작할지 고민이라면.</h3>
         <p>병원의 목표와 상황에 맞는 중국 마케팅 방향을 함께 설계합니다.</p>
         <RouterLink class="btn btn-primary" to="/contact">에비온컴퍼니 상담 문의</RouterLink>

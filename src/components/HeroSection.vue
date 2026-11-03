@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import heroClinic from '@/assets/images/hero-clinic.jpg'
 
 const heroReady = ref(false)
+/** 페이지 진입 후 모션 시작까지 대기 (ms) */
+const HERO_START_MS = 420
+
+let heroStartTimer: ReturnType<typeof setTimeout> | null = null
 
 const highlights = [
   { label: '피부과 특화', desc: '중국 마케팅 운영' },
@@ -11,9 +15,13 @@ const highlights = [
 ]
 
 onMounted(() => {
-  requestAnimationFrame(() => {
+  heroStartTimer = setTimeout(() => {
     heroReady.value = true
-  })
+  }, HERO_START_MS)
+})
+
+onBeforeUnmount(() => {
+  if (heroStartTimer) clearTimeout(heroStartTimer)
 })
 </script>
 
@@ -39,7 +47,7 @@ onMounted(() => {
           v-for="(item, index) in highlights"
           :key="item.label"
           class="hero__point"
-          :style="{ transitionDelay: `${0.34 + index * 0.07}s` }"
+          :style="{ transitionDelay: `${0.4 + index * 0.15}s` }"
         >
           <strong>{{ item.label }}</strong>
           <span>{{ item.desc }}</span>
@@ -76,57 +84,13 @@ onMounted(() => {
 }
 
 .hero__eyebrow,
-.hero__title,
-.hero__en,
-.hero__sub,
-.hero__actions {
+.hero__sub {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(16px);
   transition:
     opacity 0.65s var(--ease),
     transform 0.65s var(--ease);
-}
-
-.hero__eyebrow {
-  transition-delay: 0.04s;
-}
-
-.hero__title {
-  transition-delay: 0.1s;
-}
-
-.hero__en {
-  transition-delay: 0.16s;
-}
-
-.hero__sub {
-  transition-delay: 0.22s;
-}
-
-.hero__actions {
-  transition-delay: 0.28s;
-}
-
-.hero.is-ready .hero__eyebrow,
-.hero.is-ready .hero__title,
-.hero.is-ready .hero__en,
-.hero.is-ready .hero__sub,
-.hero.is-ready .hero__actions {
-  opacity: 1;
-  transform: none;
-}
-
-.hero__point {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.55s var(--ease),
-    transform 0.55s var(--ease);
-}
-
-.hero.is-ready .hero__point {
-  opacity: 1;
-  transform: none;
+  transition-delay: 0s;
 }
 
 .hero__eyebrow {
@@ -139,6 +103,12 @@ onMounted(() => {
   color: #f6b06a;
   font-size: 13px;
   font-weight: 600;
+}
+
+.hero.is-ready .hero__eyebrow,
+.hero.is-ready .hero__sub {
+  opacity: 1;
+  transform: none;
 }
 
 .hero__title {
@@ -154,6 +124,37 @@ onMounted(() => {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
+}
+
+.hero__sub,
+.hero__actions {
+  transition:
+    opacity 0.65s var(--ease),
+    transform 0.65s var(--ease);
+}
+
+.hero__actions {
+  opacity: 0;
+  transform: translateY(14px);
+  transition-delay: 0.08s;
+}
+
+.hero.is-ready .hero__actions {
+  opacity: 1;
+  transform: none;
+}
+
+.hero__point {
+  opacity: 0;
+  transform: translateY(-22px);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+.hero.is-ready .hero__point {
+  opacity: 1;
+  transform: none;
 }
 
 .hero__sub {

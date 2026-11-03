@@ -24,19 +24,19 @@ const items = [
 <template>
   <section id="home-services" class="overview">
     <div class="overview__inner">
-      <ul class="overview__grid">
-        <ScrollReveal
-          v-for="item in items"
-          :key="item.title"
-          tag="li"
-          class="overview__card motion-lift"
-          self
-          :threshold="0.12"
-        >
-          <h2>{{ item.title }}</h2>
-          <p>{{ item.desc }}</p>
-        </ScrollReveal>
-      </ul>
+      <ScrollReveal tag="div" class="overview__grid-wrap">
+        <ul class="overview__grid">
+          <li
+            v-for="(item, index) in items"
+            :key="item.title"
+            class="overview__card motion-lift reveal-item"
+            :style="{ transitionDelay: `${0.05 + index * 0.1}s` }"
+          >
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.desc }}</p>
+          </li>
+        </ul>
+      </ScrollReveal>
     </div>
   </section>
 </template>
@@ -51,6 +51,10 @@ const items = [
   width: min(1120px, calc(100% - 64px));
   margin: 0 auto;
   padding: 80px 0 72px;
+}
+
+.overview__grid-wrap {
+  display: block;
 }
 
 .overview__grid {

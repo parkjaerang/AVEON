@@ -73,13 +73,13 @@ const onSubmit = async () => {
     <section class="contact">
       <div class="contact__inner">
         <div class="contact__layout">
-          <ScrollReveal tag="aside" class="contact__intro" self :threshold="0.15">
+          <ScrollReveal tag="aside" class="contact__intro" self :threshold="0.28">
             <p class="contact__label">CONTACT · 상담 문의</p>
             <h2 class="contact__title">마케팅 상담 신청</h2>
             <p class="contact__desc">내용을 작성하신 뒤 협업 문의 보내기를 눌러 주세요.</p>
           </ScrollReveal>
 
-          <ScrollReveal class="contact__form-panel" :threshold="0.08">
+          <ScrollReveal class="contact__form-panel" :threshold="0.22">
             <form class="form" novalidate @submit.prevent="onSubmit">
               <label class="form__field reveal-item">
                 병원명 / 회사명
@@ -202,8 +202,6 @@ const onSubmit = async () => {
   top: calc(var(--header-h) + 24px);
   align-self: start;
   padding: 40px 32px 36px;
-  background: var(--gray);
-  border-right: 1px solid var(--border);
 }
 
 .contact__label {

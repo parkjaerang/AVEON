@@ -34,11 +34,14 @@ const platforms = [
         :key="item.name"
         tag="article"
         class="platform"
-        self
-        :threshold="0.12"
       >
         <figure class="platform__media">
-          <img :src="item.image" :alt="item.alt" loading="lazy" />
+          <img
+            class="platform__image"
+            :src="item.image"
+            :alt="item.alt"
+            loading="lazy"
+          />
         </figure>
         <div class="platform__copy">
           <h2>{{ item.name }}</h2>
@@ -72,26 +75,41 @@ const platforms = [
 }
 
 .platform__media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   aspect-ratio: 2 / 1;
   width: 100%;
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--white);
-  border: 1px solid #e8eaee;
   box-shadow: 0 1px 2px rgba(23, 42, 67, 0.04);
-  padding: clamp(20px, 3vw, 32px);
 }
 
 .platform__media img {
-  width: auto;
-  max-width: min(140px, 42%);
-  max-height: min(120px, 70%);
-  height: auto;
-  object-fit: contain;
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+.platform:not(.is-visible) .platform__image {
+  transform: scale(1.2);
+}
+
+.platform.is-visible .platform__image {
+  animation: platform-image-zoom 0.85s var(--ease) forwards;
+}
+
+@keyframes platform-image-zoom {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .platform__copy {
@@ -100,6 +118,17 @@ const platforms = [
   justify-content: center;
   gap: 10px;
   padding-block: 8px;
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+  transition-delay: 0.12s;
+}
+
+.platform.is-visible .platform__copy {
+  opacity: 1;
+  transform: none;
 }
 
 .platform__copy h2 {
@@ -131,10 +160,19 @@ const platforms = [
   .platform__copy {
     padding-block: 0 4px;
   }
+}
 
-  .platform__media img {
-    max-width: min(120px, 36%);
-    max-height: 100px;
+@media (prefers-reduced-motion: reduce) {
+  .platform:not(.is-visible) .platform__image,
+  .platform.is-visible .platform__image {
+    transform: none;
+    animation: none;
+  }
+
+  .platform__copy {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 </style>

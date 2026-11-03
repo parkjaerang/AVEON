@@ -55,7 +55,7 @@ const services: ServiceItem[] = [
 <template>
   <section id="services" class="services">
     <div class="services__inner">
-      <ScrollReveal tag="header" class="services__head" :threshold="0.2">
+      <ScrollReveal tag="header" class="services__head" :threshold="0.32">
         <p class="services__label reveal-item">SERVICES</p>
         <h2 class="reveal-item" style="transition-delay: 0.06s">
           중국 마케팅에 필요한 실행을<br />한 흐름으로 맡깁니다
@@ -66,7 +66,7 @@ const services: ServiceItem[] = [
         </p>
       </ScrollReveal>
 
-      <ScrollReveal tag="article" class="feature" self :threshold="0.1">
+      <ScrollReveal tag="article" class="feature" self :threshold="0.26">
         <div class="feature__copy">
           <span>{{ featured.index }}</span>
           <h3>{{ featured.title }}</h3>
@@ -81,7 +81,7 @@ const services: ServiceItem[] = [
       </ScrollReveal>
 
       <div class="grid">
-        <ScrollReveal tag="article" class="card card--photo motion-lift" self :threshold="0.1">
+        <ScrollReveal tag="article" class="card card--photo motion-lift" self :threshold="0.26">
           <figure>
             <img :src="servicePortrait" alt="중국 인플루언서 섭외" />
           </figure>
@@ -95,7 +95,7 @@ const services: ServiceItem[] = [
           </div>
         </ScrollReveal>
 
-        <ScrollReveal tag="article" class="card motion-lift" self :threshold="0.1">
+        <ScrollReveal tag="article" class="card motion-lift" self :threshold="0.26">
           <div class="card__body">
             <span>{{ services[1].index }}</span>
             <h3>{{ services[1].title }}</h3>
@@ -106,7 +106,7 @@ const services: ServiceItem[] = [
           </div>
         </ScrollReveal>
 
-        <ScrollReveal tag="article" class="card card--wide motion-lift" self :threshold="0.1">
+        <ScrollReveal tag="article" class="card card--wide motion-lift" self :threshold="0.26">
           <div class="card__body">
             <span>{{ services[2].index }}</span>
             <h3>{{ services[2].title }}</h3>
@@ -120,7 +120,7 @@ const services: ServiceItem[] = [
           </figure>
         </ScrollReveal>
 
-        <ScrollReveal tag="article" class="card motion-lift" self :threshold="0.1">
+        <ScrollReveal tag="article" class="card motion-lift" self :threshold="0.26">
           <div class="card__body">
             <span>{{ services[3].index }}</span>
             <h3>{{ services[3].title }}</h3>
@@ -131,7 +131,7 @@ const services: ServiceItem[] = [
           </div>
         </ScrollReveal>
 
-        <ScrollReveal tag="article" class="card card--accent motion-lift" self :threshold="0.1">
+        <ScrollReveal tag="article" class="card card--accent motion-lift" self :threshold="0.26">
           <div class="card__body">
             <span>{{ services[4].index }}</span>
             <h3>{{ services[4].title }}</h3>

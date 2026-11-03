@@ -10,8 +10,8 @@ const props = withDefaults(
     self?: boolean
   }>(),
   {
-    threshold: 0.12,
-    rootMargin: '0px 0px -6% 0px',
+    threshold: 0.4,
+    rootMargin: '0px 0px -10% 0px',
     tag: 'div',
     self: false,
   },
