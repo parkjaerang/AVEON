@@ -83,7 +83,6 @@ onBeforeUnmount(() => {
   padding: 72px 64px 64px;
 }
 
-.hero__eyebrow,
 .hero__sub {
   opacity: 0;
   transform: translateY(16px);
@@ -103,6 +102,12 @@ onBeforeUnmount(() => {
   color: #f6b06a;
   font-size: 13px;
   font-weight: 600;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 0.65s var(--ease),
+    transform 0.65s var(--ease);
+  transition-delay: 0s;
 }
 
 .hero.is-ready .hero__eyebrow,

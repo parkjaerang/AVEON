@@ -1,22 +1,27 @@
 <script setup lang="ts">
+import { BarChart3, Clapperboard, MessagesSquare, UsersRound } from 'lucide-vue-next'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 
 const items = [
   {
     title: '중국 SNS 운영',
     desc: '계정 관리 및 콘텐츠 운영',
+    icon: MessagesSquare,
   },
   {
     title: '인플루언서 섭외',
     desc: 'KOL·KOC 매칭 및 캠페인',
+    icon: UsersRound,
   },
   {
     title: '콘텐츠 제작',
     desc: '영상·사진·체험형 콘텐츠',
+    icon: Clapperboard,
   },
   {
     title: '성과 분석',
     desc: '노출·반응·문의 데이터 분석',
+    icon: BarChart3,
   },
 ]
 </script>
@@ -32,6 +37,9 @@ const items = [
             class="overview__card motion-lift reveal-item"
             :style="{ transitionDelay: `${0.05 + index * 0.1}s` }"
           >
+            <span class="overview__icon" aria-hidden="true">
+              <component :is="item.icon" :size="22" :stroke-width="1.75" />
+            </span>
             <h2>{{ item.title }}</h2>
             <p>{{ item.desc }}</p>
           </li>
@@ -69,6 +77,20 @@ const items = [
   background: var(--gray);
   border: 1px solid #e8eaee;
   border-radius: var(--radius);
+}
+
+.overview__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--orange);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .overview__card h2 {

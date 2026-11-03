@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onBeforeUnmount, reactive, ref, watch } from 'vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import type { ContactForm, ContactFormErrors } from '@/types'
 
@@ -14,14 +14,16 @@ const platformOptions = ['샤오홍슈', '더우인', '위챗', '통합운영 / 
 
 const budgetOptions = ['월 600만원 이상', '월 1,000만원 이상', '월 1,500만원 이상', '상담 후 결정']
 
-const form = reactive<ContactForm>({
+const defaultForm = (): ContactForm => ({
   company: '',
   contact: '',
   service: serviceOptions[0],
-  platform: platformOptions[3],
-  budget: budgetOptions[3],
+  platform: platformOptions[0],
+  budget: budgetOptions[0],
   message: '',
 })
+
+const form = reactive<ContactForm>(defaultForm())
 
 const errors = reactive<ContactFormErrors>({})
 const submitState = ref<'idle' | 'ok' | 'fail'>('idle')
@@ -53,19 +55,76 @@ const buildInquiryText = () =>
     form.message.trim(),
   ].join('\n')
 
-const onSubmit = async () => {
+const resetForm = () => {
+  Object.assign(form, defaultForm())
+  errors.company = undefined
+  errors.contact = undefined
+  errors.service = undefined
+  errors.platform = undefined
+  errors.budget = undefined
+  errors.message = undefined
+}
+
+const closeResult = () => {
   submitState.value = 'idle'
+}
+
+const onSubmit = async () => {
   if (!validate()) {
     return
   }
 
+  const text = buildInquiryText()
+
   try {
-    await navigator.clipboard.writeText(buildInquiryText())
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text)
+    } else {
+      throw new Error('clipboard unavailable')
+    }
+    resetForm()
     submitState.value = 'ok'
   } catch {
-    submitState.value = 'fail'
+    try {
+      const area = document.createElement('textarea')
+      area.value = text
+      area.setAttribute('readonly', '')
+      area.style.position = 'fixed'
+      area.style.left = '-9999px'
+      document.body.appendChild(area)
+      area.select()
+      const copied = document.execCommand('copy')
+      area.remove()
+      if (!copied) {
+        throw new Error('copy failed')
+      }
+      resetForm()
+      submitState.value = 'ok'
+    } catch {
+      submitState.value = 'fail'
+    }
   }
 }
+
+const onResultKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    closeResult()
+  }
+}
+
+watch(submitState, (state) => {
+  document.body.style.overflow = state === 'idle' ? '' : 'hidden'
+  if (state === 'idle') {
+    window.removeEventListener('keydown', onResultKeydown)
+  } else {
+    window.addEventListener('keydown', onResultKeydown)
+  }
+})
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = ''
+  window.removeEventListener('keydown', onResultKeydown)
+})
 </script>
 
 <template>
@@ -165,16 +224,43 @@ const onSubmit = async () => {
               >
                 협업 문의 보내기
               </button>
-
-              <p v-if="submitState === 'ok'" class="form__done">문의 내용이 준비되었습니다. 붙여넣기하여 전달해 주세요.</p>
-              <p v-else-if="submitState === 'fail'" class="form__done form__done--error">
-                처리에 실패했습니다. 브라우저 권한을 확인해 주세요.
-              </p>
             </form>
           </ScrollReveal>
         </div>
       </div>
     </section>
+
+    <Teleport to="body">
+      <div
+        v-if="submitState !== 'idle'"
+        class="result-dialog"
+        :class="{ 'result-dialog--fail': submitState === 'fail' }"
+      >
+        <div class="result-dialog__backdrop" role="presentation" @click="closeResult" />
+        <div
+          class="result-dialog__card"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="'contact-result-title'"
+          :aria-describedby="'contact-result-desc'"
+        >
+          <p class="result-dialog__label">{{ submitState === 'ok' ? '전송 완료' : '전송 실패' }}</p>
+          <h3 id="contact-result-title">
+            {{ submitState === 'ok' ? '협업 문의가 정상적으로 전송되었습니다.' : '협업 문의 전송에 실패했습니다.' }}
+          </h3>
+          <p id="contact-result-desc" class="result-dialog__desc">
+            {{
+              submitState === 'ok'
+                ? '문의 내용을 확인했으며, 담당자가 검토 후 연락드리겠습니다.'
+                : '잠시 후 다시 시도해 주세요. 같은 문제가 반복되면 브라우저 권한을 확인해 주세요.'
+            }}
+          </p>
+          <button class="btn btn-primary result-dialog__ok" type="button" @click="closeResult">
+            확인
+          </button>
+        </div>
+      </div>
+    </Teleport>
   </main>
 </template>
 
@@ -399,20 +485,6 @@ const onSubmit = async () => {
   margin-top: 4px;
 }
 
-.form__done {
-  padding: 14px 16px;
-  background: var(--gray);
-  color: var(--navy);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.7;
-}
-
-.form__done--error {
-  background: #fff7ed;
-  color: #9a3412;
-}
-
 .form__field textarea {
   min-height: 140px;
   resize: vertical;
@@ -444,5 +516,64 @@ const onSubmit = async () => {
   .form__radios--grid {
     grid-template-columns: 1fr;
   }
+}
+</style>
+
+<style>
+.result-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.result-dialog__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(23, 42, 67, 0.46);
+}
+
+.result-dialog__card {
+  position: relative;
+  width: min(420px, 100%);
+  padding: 32px 28px 28px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.result-dialog__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+}
+
+.result-dialog--fail .result-dialog__label {
+  color: #c2410c;
+}
+
+.result-dialog__card h3 {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  word-break: keep-all;
+}
+
+.result-dialog__desc {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.result-dialog__ok {
+  margin-top: 24px;
 }
 </style>
