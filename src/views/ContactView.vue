@@ -76,7 +76,10 @@ const onSubmit = async () => {
           <ScrollReveal tag="aside" class="contact__intro" self :threshold="0.28">
             <p class="contact__label">CONTACT · 상담 문의</p>
             <h2 class="contact__title">마케팅 상담 신청</h2>
-            <p class="contact__desc">내용을 작성하신 뒤 협업 문의 보내기를 눌러 주세요.</p>
+            <p class="contact__desc">
+              내용을 작성하신 뒤 협업 문의 보내기를<br />
+              눌러 주세요.
+            </p>
           </ScrollReveal>
 
           <ScrollReveal class="contact__form-panel" :threshold="0.22">
