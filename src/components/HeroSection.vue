@@ -3,7 +3,8 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import heroClinic from '@/assets/images/hero-clinic.jpg'
 
 const heroReady = ref(false)
-/** 페이지 진입 후 모션 시작까지 대기 (ms) */
+const visualReady = ref(false)
+/** 좌측 텍스트·버튼 모션 시작까지 대기 (ms) */
 const HERO_START_MS = 420
 
 let heroStartTimer: ReturnType<typeof setTimeout> | null = null
@@ -15,6 +16,9 @@ const highlights = [
 ]
 
 onMounted(() => {
+  requestAnimationFrame(() => {
+    visualReady.value = true
+  })
   heroStartTimer = setTimeout(() => {
     heroReady.value = true
   }, HERO_START_MS)
@@ -55,7 +59,7 @@ onBeforeUnmount(() => {
       </ul>
     </div>
 
-    <div class="hero__visual">
+    <div class="hero__visual" :class="{ 'is-ready': visualReady }">
       <img :src="heroClinic" alt="피부과·뷰티 케어 상담 이미지" />
       <div class="hero__caption">
         <span>AVEON COMPANY</span>
@@ -207,11 +211,11 @@ onBeforeUnmount(() => {
   opacity: 0;
   transform: scale(1.02);
   transition:
-    opacity 0.85s var(--ease) 0.12s,
-    transform 0.85s var(--ease) 0.12s;
+    opacity 0.85s var(--ease),
+    transform 0.85s var(--ease);
 }
 
-.hero.is-ready .hero__visual {
+.hero__visual.is-ready {
   opacity: 1;
   transform: none;
 }
