@@ -48,7 +48,7 @@ try {
 } catch {
   console.log('No changes to commit on web')
 }
-run(`git push ${remote} web`)
+run(`git push --force-with-lease ${remote} web`)
 run('git checkout main')
 
 rmSync(backup, { recursive: true, force: true })
