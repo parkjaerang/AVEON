@@ -44,7 +44,7 @@ jobs:
 
       - name: Prepare dist
         run: |
-          cp dist/index.html dist/404.html
+          node scripts/write-spa-404.mjs
           touch dist/.nojekyll
 
       - name: Sync built site to docs/ on main

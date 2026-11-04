@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc -b && vite build && node scripts/write-spa-404.mjs",
     "build:pages": "npm run build && node scripts/sync-docs.mjs",
     "publish:web": "npm run build && node scripts/publish-web-branch.mjs",
     "preview": "vite preview"
