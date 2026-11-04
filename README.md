@@ -100,6 +100,12 @@ npm run build
 `dist/` 디렉터리를 정적 호스팅(Netlify, Vercel, S3+CloudFront, nginx 등)에 업로드합니다.  
 SPA이므로 호스트에서 **모든 경로를 `index.html`로 fallback** 하도록 설정하세요.
 
+### GitHub Pages
+
+1. **Settings → Pages:** Branch `main`, Folder **`/docs`**
+2. `npm run build:pages` 후 `docs/` 커밋·푸시
+3. 소스에 `/AVEON/assets/index-….js`가 보이면 정상 (`/src/main.ts`면 Pages 폴더 설정 오류)
+
 ## 라이선스
 
 Private 프로젝트 (`package.json` — `"private": true`).
