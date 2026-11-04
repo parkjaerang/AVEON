@@ -1,7 +1,7 @@
 /**
  * Copy Vite dist/ → docs/ (optional /docs Pages folder).
  */
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -38,6 +38,14 @@ export function syncWebRootFromDist(distDir = dist, projectRoot = root) {
   const assetsDir = join(projectRoot, 'assets')
   rmSync(assetsDir, { recursive: true, force: true })
   cpSync(join(distDir, 'assets'), assetsDir, { recursive: true })
+
+  for (const name of readdirSync(distDir)) {
+    if (name === 'assets') continue
+    const src = join(distDir, name)
+    if (statSync(src).isFile()) {
+      cpSync(src, join(projectRoot, name))
+    }
+  }
 
   const distFavicon = join(distDir, 'favicon.svg')
   const outFavicon = join(projectRoot, 'favicon.svg')
