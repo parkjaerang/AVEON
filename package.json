@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "build:pages": "npm run build && node scripts/sync-docs.mjs",
+    "publish:web": "npm run build && node scripts/publish-web-branch.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,8 +1,8 @@
 # GitHub Pages (Repository → Settings → Pages):
 #   Source: Deploy from a branch
-#   Branch: web  ·  Folder: /docs
+#   Branch: web  ·  Folder: /(root)
 #
-# 개발: main · 배포: web (main 빌드 후 Actions가 web 브랜치를 갱신)
+# `web` 브랜치 루트에 빌드된 index.html + assets/ 가 올라가야 이미지·JS가 보입니다.
 name: Deploy GitHub Pages
 
 on:
@@ -10,6 +10,7 @@ on:
     branches: [main, web]
     paths-ignore:
       - 'docs/**'
+      - 'assets/**'
   workflow_dispatch:
 
 permissions:
@@ -46,10 +47,10 @@ jobs:
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
 
-      - name: Sync built site to docs/
+      - name: Sync built site to docs/ on main
+        if: github.ref == 'refs/heads/main'
         run: |
-          rm -rf docs
-          cp -r dist docs
+          node scripts/sync-docs.mjs
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs
@@ -57,9 +58,20 @@ jobs:
           git commit -m "chore: deploy site to docs [skip ci]"
           git push
 
-      - name: Publish web branch for GitHub Pages
+      - name: Publish web branch (Pages root)
         if: github.ref == 'refs/heads/main'
-        run: git push origin HEAD:web
+        run: node scripts/publish-web-branch.mjs
+
+      - name: Publish web branch from web
+        if: github.ref == 'refs/heads/web'
+        run: |
+          node -e "import { syncWebRootFromDist } from './scripts/sync-docs.mjs'; syncWebRootFromDist();"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html 404.html assets .nojekyll favicon.svg docs
+          git diff --staged --quiet && echo "No publish changes" && exit 0
+          git commit -m "chore: publish site to web branch root [skip ci]"
+          git push
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
