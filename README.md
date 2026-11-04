@@ -102,9 +102,12 @@ SPA이므로 호스트에서 **모든 경로를 `index.html`로 fallback** 하�
 
 ### GitHub Pages
 
-1. **Settings → Pages:** Branch `main`, Folder **`/docs`**
-2. `npm run build:pages` 후 `docs/` 커밋·푸시
-3. 소스에 `/AVEON/assets/index-….js`가 보이면 정상 (`/src/main.ts`면 Pages 폴더 설정 오류)
+**Settings → Pages:** Branch **`web`**, Folder **`/docs`**
+
+- 소스 코드·개발: `main` (`npm run dev`)
+- `main`에 push하면 Actions가 빌드 후 **`web` 브랜치**의 `docs/`를 갱신합니다.
+- 로컬 배포 동기화: `npm run build:pages` 후 `docs/` 커밋
+- 페이지 소스에 `/AVEON/assets/index-….js`가 보이면 정상 (`/src/main.ts`면 Pages **브랜치/폴더** 설정 오류)
 
 ## 라이선스
 
