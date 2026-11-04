@@ -251,13 +251,14 @@ function motionStepStyle(step: number) {
 
 .about__media img {
   width: 100%;
-  height: 420px;
+  height: 460px;
   object-fit: cover;
+  object-position: var(--media-focus);
   transition: transform 0.7s var(--ease);
 }
 
 .about__media:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .about__mv {
@@ -360,7 +361,7 @@ function motionStepStyle(step: number) {
   }
 
   .about__media img {
-    height: 240px;
+    height: 280px;
   }
 }
 

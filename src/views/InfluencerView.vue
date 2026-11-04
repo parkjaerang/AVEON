@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
               :class="`influencer__type--${item.id}`"
               self
             >
-              <figure class="influencer__type-media">
+              <figure class="influencer__type-media" :class="`influencer__type-media--${item.id}`">
                 <img :src="item.image" :alt="item.alt" loading="lazy" />
               </figure>
               <div class="influencer__type-body">
@@ -195,7 +195,8 @@ onBeforeUnmount(() => {
   height: 100%;
   margin-left: -1px;
   object-fit: cover;
-  transform: scale3d(1.06, 1.06, 1);
+  object-position: var(--media-focus);
+  transform: scale3d(1.03, 1.03, 1);
   transform-origin: center center;
   transition: transform 1.1s var(--ease);
   transition-delay: 0.12s;
@@ -298,9 +299,9 @@ onBeforeUnmount(() => {
 
 .influencer__type-media {
   position: relative;
-  flex: 0 0 220px;
+  flex: 0 0 260px;
   width: 100%;
-  height: 220px;
+  height: 260px;
   margin: 0;
   overflow: hidden;
   background: #eef1f5;
@@ -312,7 +313,15 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: var(--media-focus);
+}
+
+.influencer__type-media--kol img {
+  object-position: center 22%;
+}
+
+.influencer__type-media--koc img {
+  object-position: center 38%;
 }
 
 .influencer__type-body {
@@ -368,13 +377,14 @@ onBeforeUnmount(() => {
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 21 / 8;
+  aspect-ratio: 16 / 9;
 }
 
 .influencer__banner-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 42%;
 }
 
 .influencer__banner-caption {
@@ -498,8 +508,8 @@ onBeforeUnmount(() => {
   }
 
   .influencer__type-media {
-    flex-basis: 200px;
-    height: 200px;
+    flex-basis: 220px;
+    height: 220px;
   }
 
   .influencer__lead br {

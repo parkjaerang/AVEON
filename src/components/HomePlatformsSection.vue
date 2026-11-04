@@ -76,7 +76,7 @@ const platforms = [
 
 .platform__media {
   position: relative;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 10;
   width: 100%;
   margin: 0;
   overflow: hidden;
@@ -91,12 +91,12 @@ const platforms = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: var(--media-focus);
   will-change: transform;
 }
 
 .platform:not(.is-visible) .platform__image {
-  transform: scale(1.2);
+  transform: scale(1.12);
 }
 
 .platform.is-visible .platform__image {
@@ -105,7 +105,7 @@ const platforms = [
 
 @keyframes platform-image-zoom {
   0% {
-    transform: scale(1.2);
+    transform: scale(1.12);
   }
   100% {
     transform: scale(1);

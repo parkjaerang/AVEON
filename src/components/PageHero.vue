@@ -204,11 +204,12 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--media-focus);
   transition: transform 0.8s var(--ease);
 }
 
 .page-hero__visual:hover img {
-  transform: scale(1.06);
+  transform: scale(1.02);
 }
 
 .page-hero__badge {

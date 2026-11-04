@@ -257,12 +257,13 @@ const services: ServiceItem[] = [
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--media-focus);
   transition: transform 0.7s var(--ease);
 }
 
 .feature:hover img,
 .card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .grid {
@@ -296,7 +297,7 @@ const services: ServiceItem[] = [
 
 .card--photo {
   display: grid;
-  grid-template-rows: 220px 1fr;
+  grid-template-rows: 280px 1fr;
 }
 
 .card--wide {
@@ -306,7 +307,7 @@ const services: ServiceItem[] = [
 }
 
 .card--wide figure {
-  min-height: 220px;
+  min-height: 280px;
 }
 
 .card--accent {
@@ -347,8 +348,8 @@ const services: ServiceItem[] = [
   .feature__media,
   .card--photo figure,
   .card--wide figure {
-    min-height: 220px;
-    height: 220px;
+    min-height: 240px;
+    height: 240px;
   }
 
   .feature h3 {

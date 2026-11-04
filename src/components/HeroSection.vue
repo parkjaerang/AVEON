@@ -224,11 +224,12 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--media-focus);
   transition: transform 0.8s var(--ease);
 }
 
 .hero__visual:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .hero__caption {
