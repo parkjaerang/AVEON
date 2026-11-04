@@ -293,18 +293,26 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   padding: 0;
+  min-width: 0;
 }
 
 .influencer__type-media {
+  position: relative;
+  flex: 0 0 220px;
+  width: 100%;
+  height: 220px;
   margin: 0;
-  aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: #eef1f5;
 }
 
 .influencer__type-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .influencer__type-body {
@@ -487,6 +495,11 @@ onBeforeUnmount(() => {
   .influencer__type + .influencer__type {
     border-left: 0;
     border-top: 1px solid #e8ebf0;
+  }
+
+  .influencer__type-media {
+    flex-basis: 200px;
+    height: 200px;
   }
 
   .influencer__lead br {
