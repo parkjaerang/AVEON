@@ -6,10 +6,43 @@ import HomeStrengthSection from '@/components/HomeStrengthSection.vue'
 </script>
 
 <template>
-  <main>
-    <HeroSection />
-    <HomeServicesOverview />
-    <HomePlatformsSection />
-    <HomeStrengthSection />
+  <main class="home">
+    <div class="home__hero-pin">
+      <HeroSection />
+    </div>
+    <div class="home__sheet">
+      <HomeServicesOverview />
+      <HomePlatformsSection />
+      <HomeStrengthSection />
+    </div>
   </main>
 </template>
+
+<style scoped>
+.home {
+  isolation: isolate;
+}
+
+.home__hero-pin {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.home__sheet {
+  position: relative;
+  z-index: 2;
+  background: var(--white);
+  box-shadow: 0 -24px 48px rgba(23, 42, 67, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__hero-pin {
+    position: static;
+  }
+
+  .home__sheet {
+    box-shadow: none;
+  }
+}
+</style>

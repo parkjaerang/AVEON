@@ -104,8 +104,8 @@ function motionStepStyle(step: number) {
         <div class="about__copy">
           <p class="about__label reveal-item">ABOUT</p>
           <h2 class="about__title reveal-item" style="transition-delay: 0.06s">
-            한국과 중국,<br />
-            피부과와 디지털을 연결합니다
+            한국과 중국을 연결하는<br />
+            뷰티 마케팅 전문 파트너
           </h2>
           <p class="about__axis reveal-item" style="transition-delay: 0.1s">
             KOREA × CHINA&nbsp;&nbsp;·&nbsp;&nbsp;BEAUTY × DIGITAL

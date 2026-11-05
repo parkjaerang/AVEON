@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
       <img :src="heroClinic" alt="피부과·뷰티 케어 상담 이미지" />
       <div class="hero__caption">
         <span>AVEON COMPANY</span>
-        <p>한국 피부과 · 뷰티 기업의 중국 시장 진출</p>
+        <p>한국 피부과의 중국시장 진출</p>
       </div>
     </div>
   </section>

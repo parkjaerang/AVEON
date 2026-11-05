@@ -41,7 +41,7 @@ cpSync(backup, dist, { recursive: true })
 syncWebRootFromDist(dist, root)
 
 run(
-  'git add index.html 404.html assets .nojekyll favicon.svg docs',
+  'git add index.html 404.html assets .nojekyll favicon.svg docs og-share.png',
 )
 try {
   run('git commit -m "chore: publish site to web branch root [skip ci]"')

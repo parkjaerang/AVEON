@@ -34,7 +34,8 @@ html {
 
 html,
 body {
-  overflow-x: hidden;
+  /* clip keeps sticky pin/reveal working; hidden breaks position:sticky */
+  overflow-x: clip;
 }
 
 body {

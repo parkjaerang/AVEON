@@ -68,7 +68,7 @@ jobs:
           node -e "import { syncWebRootFromDist } from './scripts/sync-docs.mjs'; syncWebRootFromDist();"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html assets .nojekyll favicon.svg docs
+          git add index.html 404.html assets .nojekyll favicon.svg docs og-share.png
           git diff --staged --quiet && echo "No publish changes" && exit 0
           git commit -m "chore: publish site to web branch root [skip ci]"
           git push
