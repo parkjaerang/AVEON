@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import heroImage from '@/assets/images/influencer-hero-unsplash.jpg'
-import kolImage from '@/assets/images/influencer-kol-unsplash.jpg'
+import kolImage from '@/assets/images/influencer-kol-unsplash.webp'
 import kocImage from '@/assets/images/influencer-koc-unsplash.jpg'
 import scopeImage from '@/assets/images/influencer-scope-unsplash.jpg'
 
@@ -187,7 +187,11 @@ const servicePoints = [
 }
 
 .influencer__type-media--kol img {
-  object-position: center 22%;
+  object-position: center 18%;
+  /* slight soften so hair/skin edges don't look jagged when scaled */
+  filter: blur(0.35px) contrast(0.985) saturate(1.03);
+  transform: scale(1.02);
+  transform-origin: center center;
 }
 
 .influencer__type-media--koc img {
