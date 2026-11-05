@@ -34,8 +34,8 @@ onBeforeUnmount(() => {
     <div class="hero__copy">
       <p class="hero__eyebrow">중국 뷰티 마케팅 파트너</p>
       <h1 class="hero__title">
-        한국의 뷰티를<br />
-        중국의 고객과 연결합니다
+        KOREA BEAUTY,<br />
+        CONNECTED TO CHINA
       </h1>
       <p class="hero__en">KOREA × CHINA · BEAUTY · DIGITAL MARKETING</p>
       <p class="hero__sub">
@@ -121,10 +121,11 @@ onBeforeUnmount(() => {
 }
 
 .hero__title {
-  font-size: clamp(32px, 3.6vw, 48px);
+  font-size: clamp(28px, 3.4vw, 46px);
   font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: -0.04em;
+  line-height: 1.22;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .hero__en {
