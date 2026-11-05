@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
   { id: 'contact', label: 'CONTACT', to: '/contact' },
 ]
 
-const contactEmail = 'contact@aveoncompany.co.kr'
+const contactEmail = 'aveon@gmail.com'
 const year = new Date().getFullYear()
 </script>
 
