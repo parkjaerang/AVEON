@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import heroImage from '@/assets/images/influencer-hero-unsplash.jpg'
 import kolImage from '@/assets/images/influencer-kol-unsplash.webp'
 import kocImage from '@/assets/images/influencer-koc-unsplash.jpg'
 import scopeImage from '@/assets/images/influencer-scope-unsplash.jpg'
@@ -39,13 +38,9 @@ const servicePoints = [
           <p class="influencer__label reveal-item">INFLUENCER NETWORK · 인플루언서 네트워크</p>
           <h1 class="reveal-item" style="transition-delay: 0.06s">CHINA INFLUENCER NETWORK</h1>
           <p class="influencer__lead reveal-item" style="transition-delay: 0.12s">
-            브랜드와 병원의 목표에 맞는 중국 인플루언서를 발굴하고,<br />
+            브랜드와 병원의 목표에 맞는 중국 인플루언서를 발굴하고,
             캠페인 실행을 지원합니다.
           </p>
-        </ScrollReveal>
-
-        <ScrollReveal tag="figure" class="influencer__hero-media" self :threshold="0.28">
-          <img :src="heroImage" alt="소셜 미디어·인플루언서 마케팅" loading="eager" />
         </ScrollReveal>
 
         <div class="influencer__content">
@@ -126,30 +121,15 @@ const servicePoints = [
 }
 
 .influencer__lead {
-  margin-top: 18px;
-  max-width: 620px;
+  margin-top: 16px;
+  max-width: 36rem;
   color: #4b5563;
   font-size: 16px;
   line-height: 1.8;
 }
 
-.influencer__hero-media {
-  margin: 40px 0 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  background: var(--gray);
-}
-
-.influencer__hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: var(--media-focus);
-}
-
 .influencer__content {
-  padding: 56px 0 0;
+  padding: 36px 0 0;
 }
 
 .influencer__types {
@@ -251,7 +231,7 @@ const servicePoints = [
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2.75 / 1;
 }
 
 .influencer__banner-media img {
@@ -334,13 +314,8 @@ const servicePoints = [
     padding: 48px 0 80px;
   }
 
-  .influencer__hero-media {
-    margin-top: 28px;
-    aspect-ratio: 4 / 3;
-  }
-
   .influencer__banner-media {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 2.2 / 1;
   }
 
   .influencer__banner-caption {
@@ -363,10 +338,6 @@ const servicePoints = [
   .influencer__type-media {
     flex-basis: 220px;
     height: 220px;
-  }
-
-  .influencer__lead br {
-    display: none;
   }
 }
 </style>
