@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import type { ServiceItem } from '@/types'
-import serviceClinic from '@/assets/images/hero-clinic.jpg'
-import servicePortrait from '@/assets/images/hero-portrait.jpg'
-import serviceCity from '@/assets/images/hero-city.jpg'
+import serviceClinic from '@/assets/images/service-marketing-ops.jpg'
+import servicePortrait from '@/assets/images/f0e6aec5-a1c8-4fe4-b19f-eb701615c0bc.png'
+import serviceCity from '@/assets/images/service-sns-management.jpg'
 
 const featured: ServiceItem = {
   index: '01',

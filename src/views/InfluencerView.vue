@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import kolImage from '@/assets/images/influencer-kol-unsplash.webp'
-import kocImage from '@/assets/images/influencer-koc-unsplash.jpg'
+import kolImage from '@/assets/images/b230a75b-ef8a-4b45-a545-1c9f184784db.png'
+import kocImage from '@/assets/images/b230a75b-ef8a-4b45ddda545-1c9f184784db.png'
 import scopeImage from '@/assets/images/influencer-scope-unsplash.jpg'
 
 const influencerTypes = [
