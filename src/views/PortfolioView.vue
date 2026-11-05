@@ -9,7 +9,7 @@ import ScrollReveal from '@/components/ScrollReveal.vue'
         <p class="portfolio__label reveal-item">PORTFOLIO · 포트폴리오</p>
         <h1 class="reveal-item" style="transition-delay: 0.06s">SELECTED PROJECTS</h1>
         <p class="portfolio__lead reveal-item" style="transition-delay: 0.12s">
-          중국 SNS와 인플루언서를 활용한 피부과·뷰티 마케팅 실행 사례를 소개합니다.
+          중국 SNS와 인플루언서를 활용한 피부과 마케팅 실행 사례를 소개합니다.
         </p>
         <RouterLink
           class="btn btn-primary reveal-item"
