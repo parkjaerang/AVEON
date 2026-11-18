@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import heroClinic from '@/assets/images/hero-clinic.jpg'
+import heroVisual from '@/assets/images/hero-clinic.jpg'
 
 const heroReady = ref(false)
 const visualReady = ref(false)
@@ -60,7 +60,7 @@ onBeforeUnmount(() => {
     </div>
 
     <div class="hero__visual" :class="{ 'is-ready': visualReady }">
-      <img :src="heroClinic" alt="피부과·뷰티 케어 상담 이미지" />
+      <img :src="heroVisual" alt="피부과·뷰티 케어 상담 이미지" />
       <div class="hero__caption">
         <span>AVEON COMPANY</span>
         <p>한국 피부과의 중국시장 진출</p>
